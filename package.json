@@ -29,7 +29,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@tracht-digital-solutions/tds-panel-contract": "file:../tds-panel-contract"
+    "@tracht-digital-solutions/tds-panel-contract": "^0.2.0"
   },
   "peerDependencies": {
     "astro": ">=6",
@@ -44,7 +44,7 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",

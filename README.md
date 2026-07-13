@@ -28,10 +28,10 @@ The base API adds `new TimeTrackerModule()` to its `ModuleRegistry`.
 ## Develop
 
 ```bash
-npm install        # file: dep on ../tds-panel-contract during local dev
+npm install        # pulls tds-panel-contract from GitHub Packages (needs NPM_TOKEN)
 npm run build      # tsup → dist/ (the manifest the host imports)
 npm run type-check
-composer install   # path repo → ../tds-panel-contract
+composer install   # resolves tds-panel-contract from its public VCS repo
 ```
 
 The manifest's `island` / route `entrypoint` values are package subpaths

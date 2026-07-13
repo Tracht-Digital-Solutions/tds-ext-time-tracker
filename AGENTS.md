@@ -25,8 +25,10 @@ The first TDS panel **extension** and the reference for `panel-contract`. Read
   shell in a loop (see `panel-contract` astro.ts).
 - **Migration class names must be globally unique** across all modules — always
   prefix with `TimeTracker`.
-- During local dev, both halves point at `../tds-panel-contract` (npm `file:` /
-  Composer `path` repo). CI/consumers use the published package versions.
+- Depends on the **published** `tds-panel-contract` (`^0.2.0`): npm from GitHub
+  Packages (`.npmrc` + `NPM_TOKEN`), Composer from the public VCS repo. **No local
+  path repo** — Composer fatals on a missing path repo in CI. Same dual pipeline as
+  `tds-ext-template` (annotated release tag; `npm install --no-package-lock`).
 
 ## Commands
 
