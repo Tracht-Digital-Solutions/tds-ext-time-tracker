@@ -25,7 +25,7 @@ The first TDS panel **extension** and the reference for `panel-contract`. Read
   shell in a loop (see `panel-contract` astro.ts).
 - **Migration class names must be globally unique** across all modules — always
   prefix with `TimeTracker`.
-- During local dev, both halves point at `../panel-contract` (npm `file:` /
+- During local dev, both halves point at `../tds-panel-contract` (npm `file:` /
   Composer `path` repo). CI/consumers use the published package versions.
 
 ## Commands

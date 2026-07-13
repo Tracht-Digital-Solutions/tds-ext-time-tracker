@@ -1,5 +1,5 @@
 {
-  "name": "@tracht-digital-solutions/ext-time-tracker",
+  "name": "@tracht-digital-solutions/tds-ext-time-tracker",
   "version": "0.1.0",
   "description": "Time-tracker extension for the TDS panel platform. Contributes the /time page, a dashboard widget, nav, a permission, a settings section and i18n via panel-contract.",
   "license": "UNLICENSED",
@@ -29,7 +29,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@tracht-digital-solutions/panel-contract": "file:../panel-contract"
+    "@tracht-digital-solutions/tds-panel-contract": "file:../tds-panel-contract"
   },
   "peerDependencies": {
     "astro": ">=6",
@@ -48,6 +48,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tracht-Digital-Solutions/ext-time-tracker.git"
+    "url": "git+https://github.com/Tracht-Digital-Solutions/tds-ext-time-tracker.git"
   }
 }

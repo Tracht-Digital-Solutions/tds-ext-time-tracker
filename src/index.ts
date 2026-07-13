@@ -1,4 +1,4 @@
-import { defineExtension } from "@tracht-digital-solutions/panel-contract";
+import { defineExtension } from "@tracht-digital-solutions/tds-panel-contract";
 
 /**
  * Time-tracker extension — the first extension, and the reference for the
@@ -30,7 +30,7 @@ export default defineExtension({
     {
       id: "time-week",
       title: "Diese Woche",
-      island: "@tracht-digital-solutions/ext-time-tracker/widgets/Week.astro",
+      island: "@tracht-digital-solutions/tds-ext-time-tracker/widgets/Week.astro",
       size: "md",
       permission: "time:read",
       dataEndpoint: "/time/summary",
@@ -41,14 +41,14 @@ export default defineExtension({
     {
       id: "time",
       label: "Zeiterfassung",
-      island: "@tracht-digital-solutions/ext-time-tracker/islands/Settings.astro",
+      island: "@tracht-digital-solutions/tds-ext-time-tracker/islands/Settings.astro",
       order: 20,
     },
   ],
   routes: [
     {
       pattern: "/time",
-      entrypoint: "@tracht-digital-solutions/ext-time-tracker/pages/Index.astro",
+      entrypoint: "@tracht-digital-solutions/tds-ext-time-tracker/pages/Index.astro",
       permission: "time:read",
     },
   ],

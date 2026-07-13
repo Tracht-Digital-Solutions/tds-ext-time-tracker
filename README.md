@@ -3,12 +3,12 @@
 Time-tracker **extension** for the TDS panel platform, and the **reference
 implementation** of `panel-contract`. Two halves in one repo, like the contract:
 
-- **Frontend** (`@tracht-digital-solutions/ext-time-tracker`, GitHub Packages) —
+- **Frontend** (`@tracht-digital-solutions/tds-ext-time-tracker`, GitHub Packages) —
   a default-exported `ExtensionManifest` (`src/index.ts`) plus the `.astro` pages
   / widgets / settings and the React islands they hydrate (`pages/`, `widgets/`,
   `islands/`). Contributes: the `/time` page, the "Diese Woche" dashboard widget,
   a nav entry, the `time:read` permission, a settings section, DE/EN i18n.
-- **Backend** (`tracht-digital-solutions/ext-time-tracker`, Composer) — a
+- **Backend** (`tracht-digital-solutions/tds-ext-time-tracker`, Composer) — a
   `TimeTrackerModule` (`php/src/`) mounting `/time/*` (incl. the widget's
   `/time/summary` dataEndpoint) + its Phinx migrations (`php/db/migrations`,
   class names prefixed `TimeTracker*`).
@@ -18,8 +18,8 @@ implementation** of `panel-contract`. Two halves in one repo, like the contract:
 The product host enables it in `astro.config.mjs`:
 
 ```ts
-import { panelHost } from "@tracht-digital-solutions/panel-contract/astro";
-import timeTracker from "@tracht-digital-solutions/ext-time-tracker";
+import { panelHost } from "@tracht-digital-solutions/tds-panel-contract/astro";
+import timeTracker from "@tracht-digital-solutions/tds-ext-time-tracker";
 export default defineConfig({ integrations: [react(), panelHost({ extensions: [timeTracker] })] });
 ```
 
@@ -28,10 +28,10 @@ The base API adds `new TimeTrackerModule()` to its `ModuleRegistry`.
 ## Develop
 
 ```bash
-npm install        # file: dep on ../panel-contract during local dev
+npm install        # file: dep on ../tds-panel-contract during local dev
 npm run build      # tsup → dist/ (the manifest the host imports)
 npm run type-check
-composer install   # path repo → ../panel-contract
+composer install   # path repo → ../tds-panel-contract
 ```
 
 The manifest's `island` / route `entrypoint` values are package subpaths
