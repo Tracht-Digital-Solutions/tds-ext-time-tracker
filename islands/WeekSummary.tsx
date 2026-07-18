@@ -1,20 +1,33 @@
 import { useEffect, useState } from "react";
 
+interface Summary {
+  weekHours: number;
+  running: { id: number; started_at: string; note: string | null } | null;
+}
+
 /**
- * Hydrated widget body. In the real extension this fetches `/time/summary`
- * (the manifest's dataEndpoint) via the base's API wrapper; the smoke uses a
- * static placeholder to prove the island hydrates when rendered through the
- * contract's widget slot.
+ * Dashboard widget body — this week's tracked hours + a running-timer hint.
+ * Fetches the manifest's dataEndpoint (`/time/summary`) via the panel API
+ * (same-origin relative fetch with the session cookie, like every extension).
  */
 export default function WeekSummary() {
-  const [hours, setHours] = useState<number | null>(null);
+  const [data, setData] = useState<Summary | null>(null);
+  const [failed, setFailed] = useState(false);
+
   useEffect(() => {
-    // Placeholder: real impl calls the panel API base + dataEndpoint.
-    setHours(12.5);
+    fetch("/time/summary", { credentials: "include" })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error())))
+      .then((d: Summary) => setData(d))
+      .catch(() => setFailed(true));
   }, []);
+
+  if (failed) return <p className="widget__metric">–</p>;
+  if (data === null) return <p className="widget__metric">…</p>;
+
   return (
-    <p className="widget__metric">
-      {hours === null ? "…" : `${hours.toLocaleString("de-DE")} h`}
-    </p>
+    <div>
+      <p className="widget__metric">{data.weekHours.toLocaleString("de-DE")} h</p>
+      {data.running ? <p className="text-xs opacity-70">⏱ Timer läuft</p> : null}
+    </div>
   );
 }

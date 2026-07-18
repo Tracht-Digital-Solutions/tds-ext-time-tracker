@@ -14,7 +14,10 @@ export default defineExtension({
   id: "time-tracker",
   name: "Zeiterfassung",
   version: "0.1.0",
-  permissions: [{ id: "time:read", label: "Zeiten ansehen", group: "time-tracker" }],
+  permissions: [
+    { id: "time:read", label: "Zeiten ansehen", group: "time-tracker" },
+    { id: "time:write", label: "Zeiten erfassen", group: "time-tracker" },
+  ],
   nav: [
     {
       id: "time",

@@ -30,6 +30,23 @@ The first TDS panel **extension** and the reference for `panel-contract`. Read
   path repo** — Composer fatals on a missing path repo in CI. Same dual pipeline as
   `tds-ext-template` (annotated release tag; `npm install --no-package-lock`).
 
+## Checkpoint status
+
+- **CP1 (reference smoke):** manifest with all six slots + placeholder
+  `/time/summary` proved end-to-end composition.
+- **CP2 (real time tracking):** `Domain\TimeEntryRepository` + a real module —
+  scoped to the authenticated user (`app_user_id` = JWT `userId`, via the core
+  `UserContext`; data via the core PDO). A single running timer (`POST /time/start`
+  / `/time/stop`, one open `ended_at IS NULL` row per user), manual entries
+  (`POST /time/entries`, validated `ended_at > started_at`), a recent list
+  (`GET /time/entries`, SQL-computed duration), delete, and the widget's real
+  weekly total (`GET /time/summary` → `weekHours` + running state, current ISO
+  week Mon→now). New `time:write` permission (viewing stays `time:read`). Frontend:
+  the `WeekSummary` widget fetches the real summary; the `/time` page hosts the full
+  `TimeTracker` island (timer + manual form + list). phpunit 4/4 (RBAC/validation
+  short-circuit before the repo; DB-backed paths skip without a DB). Added `php-di`
+  dev dep for the test container.
+
 ## Commands
 
 ```bash

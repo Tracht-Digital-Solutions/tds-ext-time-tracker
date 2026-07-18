@@ -1,11 +1,10 @@
 ---
 // The /time page, injected into the host build via the contract's route slot.
-// In the real extension this hosts the full TimeTracker island; the smoke keeps
-// it minimal to validate route injection from a package.
-import WeekSummary from "../islands/WeekSummary.tsx";
+// Hosts the full TimeTracker island (start/stop timer, manual entries, list).
+import TimeTracker from "../islands/TimeTracker.tsx";
 ---
 
 <section class="page page--time">
   <h1>Zeiterfassung</h1>
-  <WeekSummary client:load />
+  <TimeTracker client:load />
 </section>

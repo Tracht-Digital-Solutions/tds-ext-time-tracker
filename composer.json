@@ -3,13 +3,14 @@
   "description": "Time-tracker extension (backend Module) for the TDS panel platform.",
   "type": "library",
   "license": "proprietary",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "require": {
     "php": ">=8.1",
     "slim/slim": "^4.13",
     "tracht-digital-solutions/tds-panel-contract": "^1.0.0"
   },
   "require-dev": {
+    "php-di/php-di": "^7.0",
     "phpunit/phpunit": "^10.5",
     "slim/psr7": "^1.6"
   },
