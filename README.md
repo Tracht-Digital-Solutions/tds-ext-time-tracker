@@ -39,6 +39,9 @@ The manifest's `island` / route `entrypoint` values are package subpaths
 
 ## Status
 
-Minimal but real (the `/time` UI + summary payload are placeholders). Built to
-validate the contract end-to-end; the full tracker UI is ported from
-`tds-admin`'s `TimeTracker.tsx` next.
+Real and complete (v0.1.x). The `/time` page is a full tracker island — a single
+running timer (`POST /time/start` / `/stop`, one open row per user), manual entries
+(validated `ended_at > started_at`), a recent-entries list with computed durations, and
+a real weekly total (`GET /time/summary` → `weekHours` + running, ISO week Mon→now). All
+scoped to the authenticated user via the core `UserContext`; data via the core `PDO`.
+Permissions: `time:read` (view) / `time:write` (mutate).
