@@ -1,7 +1,7 @@
 # AGENTS.md — ext-time-tracker
 
-The first TDS panel **extension** and the reference for `panel-contract`. Read
-`panel-contract`'s AGENTS.md first — this repo just implements that contract.
+The first TDS frontend **extension** and the reference for `frontend-contract`. Read
+`frontend-contract`'s AGENTS.md first — this repo just implements that contract.
 
 ## Shape
 
@@ -19,13 +19,13 @@ The first TDS panel **extension** and the reference for `panel-contract`. Read
   exposed in `package.json` `exports` (`./pages/*`, `./widgets/*`, `./islands/*`)
   so the host's Astro/Vite resolves them from `node_modules`.
 - **The manifest is built (tsup) to `dist/`.** The host imports plain JS from
-  `.`; `defineExtension` is `external` (resolved from the host's panel-contract).
+  `.`; `defineExtension` is `external` (resolved from the host's frontend-contract).
 - **Widgets can't be hydrated by string.** A widget is an `.astro` shell that
   internally renders its React island with `client:load`; the host renders the
-  shell in a loop (see `panel-contract` astro.ts).
+  shell in a loop (see `frontend-contract` astro.ts).
 - **Migration class names must be globally unique** across all modules — always
   prefix with `TimeTracker`.
-- Depends on the **published** `tds-panel-contract` (`^0.2.0`): npm from GitHub
+- Depends on the **published** `tds-frontend-contract` (`^0.2.0`): npm from GitHub
   Packages (`.npmrc` + `NPM_TOKEN`), Composer from the public VCS repo. **No local
   path repo** — Composer fatals on a missing path repo in CI. Same dual pipeline as
   `tds-ext-template-pkg` (annotated release tag; `npm install --no-package-lock`).

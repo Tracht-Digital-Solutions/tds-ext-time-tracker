@@ -8,9 +8,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 use Tds\Ext\TimeTracker\Domain\TimeEntryRepository;
-use Tds\Panel\Contract\AbstractModule;
-use Tds\Panel\Contract\PermissionDef;
-use Tds\Panel\Contract\UserContext;
+use Tds\Frontend\Contract\AbstractModule;
+use Tds\Frontend\Contract\PermissionDef;
+use Tds\Frontend\Contract\UserContext;
 
 /**
  * Backend half of the time-tracker extension. Real time tracking scoped to the

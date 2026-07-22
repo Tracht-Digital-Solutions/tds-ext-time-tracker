@@ -1,7 +1,7 @@
 # ext-time-tracker
 
-Time-tracker **extension** for the TDS panel platform, and the **reference
-implementation** of `panel-contract`. Two halves in one repo, like the contract:
+Time-tracker **extension** for the TDS frontend platform, and the **reference
+implementation** of `frontend-contract`. Two halves in one repo, like the contract:
 
 - **Frontend** (`@tracht-digital-solutions/tds-ext-time-tracker`, GitHub Packages) —
   a default-exported `ExtensionManifest` (`src/index.ts`) plus the `.astro` pages
@@ -18,9 +18,9 @@ implementation** of `panel-contract`. Two halves in one repo, like the contract:
 The product host enables it in `astro.config.mjs`:
 
 ```ts
-import { panelHost } from "@tracht-digital-solutions/tds-panel-contract/astro";
+import { frontendHost } from "@tracht-digital-solutions/tds-frontend-contract/astro";
 import timeTracker from "@tracht-digital-solutions/tds-ext-time-tracker";
-export default defineConfig({ integrations: [react(), panelHost({ extensions: [timeTracker] })] });
+export default defineConfig({ integrations: [react(), frontendHost({ extensions: [timeTracker] })] });
 ```
 
 The base API adds `new TimeTrackerModule()` to its `ModuleRegistry`.
@@ -28,10 +28,10 @@ The base API adds `new TimeTrackerModule()` to its `ModuleRegistry`.
 ## Develop
 
 ```bash
-npm install        # pulls tds-panel-contract from GitHub Packages (needs NPM_TOKEN)
+npm install        # pulls tds-frontend-contract from GitHub Packages (needs NPM_TOKEN)
 npm run build      # tsup → dist/ (the manifest the host imports)
 npm run type-check
-composer install   # resolves tds-panel-contract from its public VCS repo
+composer install   # resolves tds-frontend-contract from its public VCS repo
 ```
 
 The manifest's `island` / route `entrypoint` values are package subpaths
